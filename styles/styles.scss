@@ -1,0 +1,35 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto");
+@import "./colors";
+@import "./mixins";
+@import "./video_player";
+@import "./controls";
+@import "./other_videos";
+
+*,
+*::before,
+**::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  touch-action: manipulation;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background-color: $primary;
+  color: $text;
+  font-family: "Roboto", sans-serif;
+}
+
+::-webkit-scrollbar {
+  width: 0.25rem;
+}
+::-webkit-scrollbar-thumb {
+  border-radius: 0.25rem;
+  background-color: $accent-light;
+}

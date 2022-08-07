@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0 maximum-scale=1.0 user-scalable=no"
+    />
+    <link
+      href="https://fonts.googleapis.com/css?family=Material+Icons|Material+Icons+Outlined|Material+Icons+Two+Tone|Material+Icons+Round|Material+Icons+Sharp"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./styles/styles.css" />
+    <title>video player</title>
+  </head>
+  <body oncontextmenu="return false">
+    <section id="selected_video">
+      <video
+        loop
+        id="video_player"
+        ontimeupdate="updatecurrentTime()"
+        ondragover="allowDropVideo(event)"
+        ondrop="dropVideo(event)"
+        ondragend="onDropVideo(event)"
+        src="./video/simple_song.mkv"
+      ></video>
+
+      <div class="controls">
+        <div class="playback">
+          <button id="play_pause">
+            <span class="material-icons-outlined play"> play_arrow </span>
+
+            <span class="material-icons-outlined pause"> pause </span>
+          </button>
+
+          <div class="_rates">
+            <button onclick="setPlaybackRate(0.5)">0.5X</button>
+            <button onclick="setPlaybackRate(1)">1X</button>
+            <button onclick="setPlaybackRate(1.5)">1.5X</button>
+            <button onclick="setPlaybackRate(2)">2X</button>
+            <button onclick="setPlaybackRate(2.5)">2.5X</button>
+          </div>
+        </div>
+
+        <div id="times">
+          <p id="curr_time"></p>
+          <p id="total_time"></p>
+        </div>
+
+        <div id="video_progress"></div>
+      </div>
+    </section>
+
+    <section id="other_videos">
+      <div
+        draggable="true"
+        id="video_poster"
+        style="
+          background-image: url(https://firebasestorage.googleapis.com/v0/b/img-uploader-b6b4b.appspot.com/o/seeign-blind.jpg?alt=media&token=cb541c3d-1e5f-45e8-bccf-697e3372f28d);
+        "
+        ondragstart="dragVideo(event, `https://firebasestorage.googleapis.com/v0/b/img-uploader-b6b4b.appspot.com/o/seeign_blind.mp4?alt=media&token=32c73e3d-49fd-448a-beca-bd4a2392f2bc`)"
+        onclick="playOtherVideo(`https://firebasestorage.googleapis.com/v0/b/img-uploader-b6b4b.appspot.com/o/seeign_blind.mp4?alt=media&token=32c73e3d-49fd-448a-beca-bd4a2392f2bc`)"
+      >
+        <div class="content">
+          <p>Niall Horan - Seeing blind</p>
+        </div>
+      </div>
+
+      <div
+        draggable="true"
+        id="video_poster"
+        style="
+          background-image: url(https://firebasestorage.googleapis.com/v0/b/img-uploader-b6b4b.appspot.com/o/better.jpg?alt=media&token=f6cc9025-b937-420d-a000-689eadea9d21);
+        "
+        ondragstart="dragVideo(event, `https://firebasestorage.googleapis.com/v0/b/img-uploader-b6b4b.appspot.com/o/better.mp4?alt=media&token=f743f18e-ea1a-444a-a97b-4b6c8c03f536`)"
+        onclick="playOtherVideo(`https://firebasestorage.googleapis.com/v0/b/img-uploader-b6b4b.appspot.com/o/better.mp4?alt=media&token=f743f18e-ea1a-444a-a97b-4b6c8c03f536`)"
+      >
+        <div class="content">
+          <p>Khalid - Better</p>
+        </div>
+      </div>
+
+      <div
+        draggable="true"
+        id="video_poster"
+        style="
+          background-image: url(https://firebasestorage.googleapis.com/v0/b/img-uploader-b6b4b.appspot.com/o/shivers.jpg?alt=media&token=08e995db-8937-4038-8d9c-ed232bf6f7f2);
+        "
+        ondragstart="dragVideo(event, `https://firebasestorage.googleapis.com/v0/b/img-uploader-b6b4b.appspot.com/o/shivers.mp4?alt=media&token=8108705a-6258-416b-8cc8-7149e33b43c4`)"
+        onclick="playOtherVideo(`https://firebasestorage.googleapis.com/v0/b/img-uploader-b6b4b.appspot.com/o/shivers.mp4?alt=media&token=8108705a-6258-416b-8cc8-7149e33b43c4`)"
+      >
+        <div class="content">
+          <p>Ed Sheeran - Shivers</p>
+        </div>
+      </div>
+
+      <div
+        draggable="true"
+        id="video_poster"
+        style="
+          background-image: url(https://firebasestorage.googleapis.com/v0/b/img-uploader-b6b4b.appspot.com/o/simple-song.jpg?alt=media&token=f00dbbc1-74d0-49de-85b3-82b0bc14e4c2);
+        "
+        ondragstart="dragVideo(event, `https://firebasestorage.googleapis.com/v0/b/img-uploader-b6b4b.appspot.com/o/simple_song.mkv?alt=media&token=67b404e1-2db2-48cb-b080-90f20530f299`)"
+        onclick="playOtherVideo(`https://firebasestorage.googleapis.com/v0/b/img-uploader-b6b4b.appspot.com/o/simple_song.mkv?alt=media&token=67b404e1-2db2-48cb-b080-90f20530f299`)"
+      >
+        <div class="content">
+          <p>Passenger - Simple song</p>
+        </div>
+      </div>
+    </section>
+
+    <p style="text-align: center">
+      Click or drag & drop a video to the player to play
+    </p>
+
+    <script src="./index.js"></script>
+  </body>
+</html>

@@ -1,0 +1,52 @@
+@mixin flexmixin($direction, $wrap, $align, $justify, $gap) {
+  display: flex !important;
+  flex-direction: $direction;
+  flex-wrap: $wrap;
+  align-items: $align;
+  justify-content: $justify;
+  gap: $gap;
+}
+
+@mixin mobile-padding {
+  padding: 0.75rem;
+}
+
+@mixin tablet-padding {
+  padding: 1rem;
+}
+
+@mixin phone-only {
+  @media (max-width: 599px) {
+    @content;
+  }
+}
+
+@mixin tablet-portrait-up {
+  @media (min-width: 600px) {
+    @content;
+  }
+}
+
+@mixin tablet-upwards {
+  @media only screen and (min-width: 768px) {
+    @content;
+  }
+}
+
+@mixin tablet-landscape-up {
+  @media (min-width: 900px) {
+    @content;
+  }
+}
+
+@mixin desktop {
+  @media only screen and (min-width: 1024px) {
+    @content;
+  }
+}
+
+@mixin big-desktop {
+  @media only screen and (min-width: 1300px) {
+    @content;
+  }
+}

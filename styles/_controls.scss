@@ -1,0 +1,65 @@
+@import "./colors";
+@import "./mixins";
+
+#selected_video {
+  .controls {
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
+
+    .playback {
+      @include flexmixin(row, no-wrap, center, space-between, 0);
+      margin-bottom: 1rem;
+
+      button {
+        padding: 0.5rem;
+        border: 1px solid $accent;
+        border-radius: 2rem;
+        outline: none;
+        box-shadow: $boxshadow;
+        background-color: transparent;
+        color: $text;
+        text-align: center;
+        text-transform: lowercase;
+        transition: all ease-in-out 0.25s;
+        cursor: pointer;
+
+        @include desktop {
+          &:hover {
+            background-color: $accent;
+          }
+        }
+      }
+
+      #play_pause {
+        border-radius: 50%;
+
+        .play,
+        .pause {
+          @include tablet-upwards {
+            font-size: 1.85rem;
+          }
+        }
+
+        .pause {
+          display: none;
+        }
+      }
+    }
+
+    #times {
+      @include flexmixin(row, no-wrap, center, space-between, 0);
+      margin-bottom: 0.5rem;
+
+      p {
+        margin: unset;
+      }
+    }
+
+    #video_progress {
+      background-color: $blueturqoise;
+      width: 0;
+      height: 0.25rem;
+      border-radius: 1rem;
+    }
+  }
+}
