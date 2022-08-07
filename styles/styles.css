@@ -149,6 +149,17 @@ body {
   color: #d0eaf9;
   font-family: "Roboto", sans-serif;
 }
+body #copy {
+  text-align: center;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  margin-left: auto;
+  margin-right: auto;
+}
+body #copy a {
+  color: #14c2fa;
+}
 
 ::-webkit-scrollbar {
   width: 0.25rem;

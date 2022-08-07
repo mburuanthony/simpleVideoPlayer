@@ -5,6 +5,7 @@ const total_time = document.querySelector("#total_time");
 const video_progress = document.querySelector("#video_progress");
 const playBtn = document.querySelector(".play");
 const pauseBtn = document.querySelector(".pause");
+const year = document.querySelector("#year");
 
 const playVideo = () => {
   video.paused ? video.play() : video.pause();
@@ -58,3 +59,6 @@ const dropVideo = (e) => {
   let videoURL = e.dataTransfer.getData("video_url");
   playOtherVideo(videoURL);
 };
+
+const yeartoday = new Date().getUTCFullYear();
+year.textContent = yeartoday;
