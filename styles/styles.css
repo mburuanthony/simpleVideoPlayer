@@ -1,4 +1,74 @@
 @import url("https://fonts.googleapis.com/css2?family=Roboto");
+#spinner_container {
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  background-color: #3d3b46;
+  opacity: 0.5;
+  z-index: 2000;
+  display: none !important;
+}
+#spinner_container #spinner {
+  overflow: hidden;
+  position: fixed;
+  transform: translate(-50%, 60%);
+  margin-left: 50%;
+  margin-right: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: transparent;
+}
+@media only screen and (min-width: 768px) {
+  #spinner_container #spinner {
+    width: 18rem;
+    height: 18rem;
+  }
+}
+#spinner_container #spinner .section {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  border-width: 0.25rem;
+  border-style: solid;
+  border-color: transparent;
+  mix-blend-mode: overlay;
+  -webkit-animation: animateprogress var(--duration) ease-in-out infinite;
+          animation: animateprogress var(--duration) ease-in-out infinite;
+  -webkit-animation-timing-function: ease;
+          animation-timing-function: ease;
+  pointer-events: none;
+}
+#spinner_container #spinner .red {
+  border-left-color: rgb(37, 3, 3);
+  --duration: 2.5s;
+}
+#spinner_container #spinner .green {
+  border-right-color: rgb(108, 173, 10);
+  --duration: 1s;
+}
+#spinner_container #spinner .blue {
+  border-top-color: rgb(8, 8, 70);
+  --duration: 1.5s;
+}
+@-webkit-keyframes animateprogress {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+@keyframes animateprogress {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
 #selected_video {
   padding: 0.75rem;
 }

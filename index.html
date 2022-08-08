@@ -15,6 +15,14 @@
     <title>video player</title>
   </head>
   <body oncontextmenu="return false">
+    <div id="spinner_container">
+      <div id="spinner">
+        <div class="section red"></div>
+        <div class="section green"></div>
+        <div class="section blue"></div>
+      </div>
+    </div>
+
     <section id="selected_video">
       <video
         loop
@@ -23,6 +31,10 @@
         ondragover="allowDropVideo(event)"
         ondrop="dropVideo(event)"
         ondragend="onDropVideo(event)"
+        onwaiting="onVideoWaiting()"
+        onload="onVideoLoaded()"
+        onloadeddata="onVideoLoaded()"
+        onplaying="onVideoLoaded()"
         src="https://firebasestorage.googleapis.com/v0/b/img-uploader-b6b4b.appspot.com/o/simple_song.mkv?alt=media&token=67b404e1-2db2-48cb-b080-90f20530f299"
       ></video>
 

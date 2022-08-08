@@ -5,6 +5,7 @@ const total_time = document.querySelector("#total_time");
 const video_progress = document.querySelector("#video_progress");
 const playBtn = document.querySelector(".play");
 const pauseBtn = document.querySelector(".pause");
+const spinner = document.querySelector("#spinner_container");
 const year = document.querySelector("#year");
 
 const playVideo = () => {
@@ -36,6 +37,14 @@ const updatecurrentTime = () => {
   const total_duration = Math.round(video.duration / 60);
   const total_duratiom_rem = Math.round(video.duration % 60);
   total_time.textContent = `${total_duration}:${total_duratiom_rem}`;
+};
+
+const onVideoWaiting = () => {
+  spinner.style.cssText = "display:block !important";
+};
+
+const onVideoLoaded = () => {
+  spinner.style.cssText = "display:none !important";
 };
 
 const setPlaybackRate = (playbackrate) => {
