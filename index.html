@@ -24,8 +24,37 @@
     </div>
 
     <section id="selected_video">
+      <div class="volume">
+        <button class="loop">
+          <span
+            class="material-icons-outlined loop_video"
+            onclick="loopVideo()"
+          >
+            repeat
+          </span>
+          <span
+            class="material-icons-outlined loop_false"
+            onclick="loopFalse()"
+          >
+            repeat_on
+          </span>
+        </button>
+
+        <button class="mute_video">
+          <span class="material-icons-outlined mute" onclick="muteVideo()">
+            volume_up
+          </span>
+          <span class="material-icons-outlined unmute" onclick="unmuteVideo()">
+            volume_off
+          </span>
+        </button>
+
+        <button>
+          <span class="material-icons-outlined"> fullscreen </span>
+        </button>
+      </div>
+
       <video
-        loop
         id="video_player"
         ontimeupdate="updatecurrentTime()"
         ondragover="allowDropVideo(event)"
@@ -122,9 +151,7 @@
       </div>
     </section>
 
-    <p style="text-align: center">
-      Click or drag & drop a video to the player to play
-    </p>
+    <p style="text-align: center">Click or drag & drop a video to the player</p>
 
     <p id="copy">
       &copy; &nbsp;<span id="year"></span> &nbsp;

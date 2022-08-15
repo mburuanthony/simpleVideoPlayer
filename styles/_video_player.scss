@@ -10,11 +10,59 @@
 
   @include mobile-padding();
 
+  .volume {
+    @include phone-only {
+      display: none !important;
+    }
+
+    @include flexmixin(column, no-wrap, center, center, 1rem);
+    position: absolute;
+    margin: 2rem 0 0 1rem;
+    padding: 1rem 0.45rem;
+    border-radius: 2rem;
+    background-color: $accent-light;
+    z-index: 2000;
+
+    button {
+      padding: 0.5rem;
+      border: 0;
+      border-radius: 50%;
+      outline: none;
+      background-color: transparent;
+      color: $text;
+      text-align: center;
+      text-transform: lowercase;
+      transition: all ease-in-out 0.25s;
+      cursor: pointer;
+
+      @include desktop {
+        &:hover {
+          background-color: $primary-light;
+        }
+      }
+    }
+
+    .loop {
+      .loop_video,
+      .loop_false {
+        display: none;
+      }
+    }
+
+    .mute_video {
+      .mute,
+      .unmute {
+        display: none !important;
+      }
+    }
+  }
+
   #video_player {
     width: 100%;
-    border-radius: 0.75rem;
+    border-radius: 1rem;
     object-fit: cover;
     object-position: center;
     box-shadow: $boxshadow;
+    cursor: pointer;
   }
 }
