@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Roboto");
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&display=swap");
 @import "./colors";
 @import "./mixins";
 @import "./spinner";
@@ -24,7 +24,7 @@ body {
   padding: 0;
   background-color: $primary;
   color: $text;
-  font-family: "Roboto", sans-serif;
+  font-family: "Open Sans", sans-serif;
 
   #copy {
     text-align: center;

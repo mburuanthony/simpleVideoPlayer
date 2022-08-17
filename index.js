@@ -10,6 +10,7 @@ const loop_false = document.querySelector(".loop_false");
 const mute = document.querySelector(".mute");
 const unmute = document.querySelector(".unmute");
 const spinner = document.querySelector("#spinner_container");
+const seek = document.querySelector("#seek");
 const year = document.querySelector("#year");
 
 const playVideo = () => {
@@ -34,6 +35,8 @@ const playVideo = () => {
     mute.style.cssText = "display:block !important";
     unmute.style.cssText = "display:none !important";
   }
+
+  seek.style.cssText = "display:block";
 };
 
 play_pause.addEventListener("click", playVideo);
@@ -107,6 +110,9 @@ const loopVideo = () => (video.loop = true);
 const loopFalse = () => (video.loop = false);
 const muteVideo = () => (video.muted = true);
 const unmuteVideo = () => (video.muted = false);
+const replay30 = () => {
+  video.currentTime = video.currentTime - 30;
+};
 
 const yeartoday = new Date().getUTCFullYear();
 year.textContent = yeartoday;
@@ -114,6 +120,14 @@ year.textContent = yeartoday;
 (() => {
   video.loop = false;
   video.muted = false;
+
+  if (video.paused) {
+    playBtn.style.cssText = "display:block";
+    pauseBtn.style.cssText = "display:none";
+  } else {
+    playBtn.style.cssText = "display:none";
+    pauseBtn.style.cssText = "display:block";
+  }
 
   if (video.loop) {
     loop_false.style.cssText = "display:block";

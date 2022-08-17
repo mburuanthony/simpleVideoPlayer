@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Roboto");
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&display=swap");
 #spinner_container {
   width: 100vw;
   height: 100vh;
@@ -94,6 +94,7 @@
   margin: 2rem 0 0 1rem;
   padding: 1rem 0.45rem;
   border-radius: 2rem;
+  box-shadow: 0px 6px 24px rgba(0, 0, 0, 0.05);
   background-color: rgba(89, 88, 97, 0.6);
   z-index: 2000;
 }
@@ -193,11 +194,26 @@
 #selected_video .controls #times p {
   margin: unset;
 }
-#selected_video .controls #video_progress {
+#selected_video .controls .seek_progress {
+  display: flex !important;
+  flex-direction: row;
+  flex-wrap: no-wrap;
+  align-items: center;
+  justify-content: none;
+  gap: 0;
+}
+#selected_video .controls .seek_progress #video_progress {
   background-color: #14c2fa;
   width: 0;
   height: 0.25rem;
-  border-radius: 1rem;
+  border-radius: 0.5rem 0 0 0.5rem;
+}
+#selected_video .controls .seek_progress #seek {
+  display: none;
+  width: 0.5rem;
+  height: 0.5rem;
+  border-radius: 50%;
+  background-color: #14c2fa;
 }
 
 #other_videos {
@@ -266,7 +282,7 @@ body {
   padding: 0;
   background-color: #3d3b46;
   color: #d0eaf9;
-  font-family: "Roboto", sans-serif;
+  font-family: "Open Sans", sans-serif;
 }
 body #copy {
   text-align: center;

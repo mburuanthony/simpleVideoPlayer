@@ -55,11 +55,23 @@
       }
     }
 
-    #video_progress {
-      background-color: $blueturqoise;
-      width: 0;
-      height: 0.25rem;
-      border-radius: 1rem;
+    .seek_progress {
+      @include flexmixin(row, no-wrap, center, none, 0);
+
+      #video_progress {
+        background-color: $blueturqoise;
+        width: 0;
+        height: 0.25rem;
+        border-radius: 0.5rem 0 0 0.5rem;
+      }
+
+      #seek {
+        display: none;
+        width: 0.5rem;
+        height: 0.5rem;
+        border-radius: 50%;
+        background-color: $blueturqoise;
+      }
     }
   }
 }

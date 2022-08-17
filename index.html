@@ -29,6 +29,7 @@
           <span
             class="material-icons-outlined loop_video"
             onclick="loopVideo()"
+            title="loop"
           >
             repeat
           </span>
@@ -41,16 +42,24 @@
         </button>
 
         <button class="mute_video">
-          <span class="material-icons-outlined mute" onclick="muteVideo()">
+          <span
+            class="material-icons-outlined mute"
+            onclick="muteVideo()"
+            title="mute"
+          >
             volume_up
           </span>
-          <span class="material-icons-outlined unmute" onclick="unmuteVideo()">
+          <span
+            class="material-icons-outlined unmute"
+            onclick="unmuteVideo()"
+            title="unmute"
+          >
             volume_off
           </span>
         </button>
 
-        <button>
-          <span class="material-icons-outlined"> fullscreen </span>
+        <button onclick="replay30()" title="-30s">
+          <span class="material-icons-outlined"> replay_30 </span>
         </button>
       </div>
 
@@ -89,7 +98,10 @@
           <p id="total_time"></p>
         </div>
 
-        <div id="video_progress"></div>
+        <div class="seek_progress">
+          <div id="video_progress"></div>
+          <span id="seek"></span>
+        </div>
       </div>
     </section>
 
