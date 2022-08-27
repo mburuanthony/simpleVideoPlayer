@@ -1,19 +1,17 @@
-let video = document.querySelector("#video_player");
-const play_pause = document.querySelector("#play_pause");
-const curr_time = document.querySelector("#curr_time");
-const total_time = document.querySelector("#total_time");
-const video_progress = document.querySelector("#video_progress");
-const playBtn = document.querySelector(".play");
-const pauseBtn = document.querySelector(".pause");
-const loop_video = document.querySelector(".loop_video");
-const loop_false = document.querySelector(".loop_false");
-const mute = document.querySelector(".mute");
-const unmute = document.querySelector(".unmute");
-const spinner = document.querySelector("#spinner_container");
-const seek = document.querySelector("#seek");
-const year = document.querySelector("#year");
+import {
+  video,
+  playBtn,
+  pauseBtn,
+  mute,
+  unmute,
+  loop_false,
+  loop_video,
+  spinner,
+  videoList,
+  playerPoster,
+} from "./index.js";
 
-const playVideo = () => {
+export const playVideo = () => {
   video.paused ? video.play() : video.pause();
 
   const total_duration = Math.round(video.duration / 59);
@@ -39,9 +37,7 @@ const playVideo = () => {
   seek.style.cssText = "display:block";
 };
 
-play_pause.addEventListener("click", playVideo);
-
-const updatecurrentTime = () => {
+export const updatecurrentTime = () => {
   const current_play_time = Math.round(video.currentTime / 59);
   const current_play_time_rem = Math.round(video.currentTime % 59);
   curr_time.textContent = `${current_play_time}:${
@@ -76,72 +72,72 @@ const updatecurrentTime = () => {
   }
 };
 
-const onVideoWaiting = () => {
+export const onVideoWaiting = () => {
   spinner.style.cssText = "display:block !important";
 };
 
-const onVideoLoaded = () => {
+export const onVideoLoaded = () => {
   spinner.style.cssText = "display:none !important";
 };
 
-const setPlaybackRate = (playbackrate) => {
+export const setPlaybackRate = (playbackrate) => {
   video.playbackRate = playbackrate;
 };
 
-const playOtherVideo = (videoURL) => {
+export const playOtherVideo = (videoURL, imageURL) => {
+  playerPoster.setAttribute("src", imageURL);
   video.src = videoURL;
   playVideo();
 };
 
-const allowDropVideo = (e) => {
+export const allowDropVideo = (e) => {
   e.preventDefault();
 };
 
-const dragVideo = (e, videoURL) => {
+export const dragVideo = (e, videoURL, imageURL) => {
   e.dataTransfer.setData("video_url", videoURL);
+  e.dataTransfer.setData("image_url", imageURL);
 };
 
-const dropVideo = (e) => {
+export const dropVideo = (e) => {
   let videoURL = e.dataTransfer.getData("video_url");
-  playOtherVideo(videoURL);
+  let imageURL = e.dataTransfer.getData("image_url");
+
+  playOtherVideo(videoURL, imageURL);
 };
 
-const loopVideo = () => (video.loop = true);
-const loopFalse = () => (video.loop = false);
-const muteVideo = () => (video.muted = true);
-const unmuteVideo = () => (video.muted = false);
-const replay30 = () => {
-  video.currentTime = video.currentTime - 30;
+export const loopVideo = () => (video.loop = true);
+export const loopFalse = () => (video.loop = false);
+
+export const muteVideo = () => (video.muted = true);
+export const unmuteVideo = () => (video.muted = false);
+
+export const replay30 = () => (video.currentTime = video.currentTime -= 30);
+export const forward30 = () => (video.currentTime = video.currentTime += 30);
+
+let currentIndex = 0;
+
+export const playPrevious = () => {
+  if (currentIndex < 0 || currentIndex >= videoList.length - 1)
+    currentIndex = videoList.length - 1;
+
+  playerPoster.setAttribute("src", videoList[currentIndex]?.imageURL);
+  playOtherVideo(
+    videoList[currentIndex]?.videoURL,
+    videoList[currentIndex]?.imageURL
+  );
+
+  currentIndex -= 1;
 };
 
-const yeartoday = new Date().getUTCFullYear();
-year.textContent = yeartoday;
+export const playNext = () => {
+  if (currentIndex >= videoList.length) currentIndex = 0;
 
-(() => {
-  video.loop = false;
-  video.muted = false;
+  playerPoster.setAttribute("src", videoList[currentIndex]?.imageURL);
+  playOtherVideo(
+    videoList[currentIndex]?.videoURL,
+    videoList[currentIndex]?.imageURL
+  );
 
-  if (video.paused) {
-    playBtn.style.cssText = "display:block";
-    pauseBtn.style.cssText = "display:none";
-  } else {
-    playBtn.style.cssText = "display:none";
-    pauseBtn.style.cssText = "display:block";
-  }
-
-  if (video.loop) {
-    loop_false.style.cssText = "display:block";
-    loop_video.style.cssText = "display:none";
-  } else {
-    loop_video.style.cssText = "display:block";
-    loop_false.style.cssText = "display:none";
-  }
-
-  if (video.muted) {
-    unmute.style.cssText = "display:block !important";
-    mute.style.cssText = "display:none !important";
-  } else {
-    mute.style.cssText = "display:block !important";
-    unmute.style.cssText = "display:none !important";
-  }
-})();
+  currentIndex += 1;
+};
