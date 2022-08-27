@@ -7,8 +7,11 @@
     margin-bottom: 0.5rem;
 
     .playback {
-      @include flexmixin(row, no-wrap, center, space-between, 0);
-      margin-bottom: 1rem;
+      @include tablet-upwards {
+        @include flexmixin(row, no-wrap, center, space-between, 0);
+      }
+
+      margin-bottom: 0.5rem;
 
       button {
         padding: 0.5rem;
@@ -30,18 +33,47 @@
         }
       }
 
-      #play_pause {
-        border-radius: 50%;
-
-        .play,
-        .pause {
-          @include tablet-upwards {
-            font-size: 1.85rem;
-          }
+      .play-pause {
+        @include tablet-upwards {
+          width: fit-content;
         }
 
-        .pause {
-          display: none;
+        @include flexmixin(row, no-wrap, center, center, 1rem);
+        width: 100%;
+
+        span {
+          font-size: 1.5rem;
+          cursor: pointer;
+        }
+
+        #play_pause {
+          border-radius: 50%;
+
+          .play,
+          .pause {
+            @include tablet-upwards {
+              font-size: 1.85rem;
+            }
+          }
+
+          .pause {
+            display: none;
+          }
+        }
+      }
+
+      ._rates {
+        @include tablet-upwards {
+          display: block;
+        }
+
+        display: none;
+
+        button {
+          border: 0;
+          box-shadow: none;
+          background-color: $accent;
+          font-size: 0.875rem;
         }
       }
     }
@@ -62,13 +94,14 @@
         background-color: $blueturqoise;
         width: 0;
         height: 0.25rem;
-        border-radius: 0.5rem 0 0 0.5rem;
+        border-radius: 0.85rem 0 0 0.85rem;
       }
 
       #seek {
         display: none;
         width: 0.5rem;
         height: 0.5rem;
+        margin-left: -0.5rem;
         border-radius: 50%;
         background-color: $blueturqoise;
       }

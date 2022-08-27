@@ -59,11 +59,30 @@
   }
 
   #video_player {
+    @include tablet-upwards {
+      border-radius: 0.85rem;
+      min-height: 22rem;
+    }
+
     width: 100%;
-    border-radius: 1rem;
+    min-height: 15rem;
+    border-radius: 0.5rem;
     object-fit: cover;
     object-position: center;
-    box-shadow: $boxshadow;
     cursor: pointer;
+  }
+
+  .player_poster {
+    @include phone-only {
+      display: none;
+    }
+
+    position: absolute;
+    transform: translateX(1rem);
+    width: 5.5rem;
+    height: 5.5rem;
+    border-radius: 50%;
+    object-fit: cover;
+    object-position: center;
   }
 }
