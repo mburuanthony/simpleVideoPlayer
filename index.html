@@ -26,70 +26,56 @@
     <section id="selected_video">
       <div class="volume">
         <button class="loop">
-          <span
-            class="material-icons-outlined loop_video"
-            onclick="loopVideo()"
-            title="loop"
-          >
-            repeat
-          </span>
-          <span
-            class="material-icons-outlined loop_false"
-            onclick="loopFalse()"
-          >
-            repeat_on
-          </span>
+          <span class="material-icons-outlined loop_video"> repeat </span>
+          <span class="material-icons-outlined loop_false"> repeat_on </span>
         </button>
 
         <button class="mute_video">
-          <span
-            class="material-icons-outlined mute"
-            onclick="muteVideo()"
-            title="mute"
-          >
-            volume_up
-          </span>
-          <span
-            class="material-icons-outlined unmute"
-            onclick="unmuteVideo()"
-            title="unmute"
-          >
-            volume_off
-          </span>
+          <span class="material-icons-outlined mute"> volume_up </span>
+          <span class="material-icons-outlined unmute"> volume_off </span>
         </button>
 
-        <button onclick="replay30()" title="-30s">
-          <span class="material-icons-outlined"> replay_30 </span>
+        <button class="shuffle">
+          <span class="material-icons-outlined" id="shuffle"> shuffle </span>
+          <span
+            class="material-icons-outlined"
+            style="display: none"
+            id="shuffle_on"
+          >
+            shuffle_on
+          </span>
         </button>
       </div>
 
-      <video
-        id="video_player"
-        ontimeupdate="updatecurrentTime()"
-        ondragover="allowDropVideo(event)"
-        ondrop="dropVideo(event)"
-        ondragend="onDropVideo(event)"
-        onwaiting="onVideoWaiting()"
-        onload="onVideoLoaded()"
-        onloadeddata="onVideoLoaded()"
-        onplaying="onVideoLoaded()"
-        src="https://firebasestorage.googleapis.com/v0/b/img-uploader-b6b4b.appspot.com/o/simple_song.mkv?alt=media&token=67b404e1-2db2-48cb-b080-90f20530f299"
-      ></video>
+      <video id="video_player"></video>
+
+      <img class="player_poster" />
 
       <div class="controls">
         <div class="playback">
-          <button id="play_pause">
-            <span class="material-icons-outlined play"> play_arrow </span>
-
-            <span class="material-icons-outlined pause"> pause </span>
-          </button>
+          <div class="play-pause">
+            <span class="material-icons-outlined" id="forward30">
+              forward_30
+            </span>
+            <span class="material-icons-outlined" id="skip_previous">
+              skip_previous
+            </span>
+            <button id="play_pause">
+              <span class="material-icons-outlined play"> play_arrow </span>
+              <span class="material-icons-outlined pause"> pause </span>
+            </button>
+            <span class="material-icons-outlined" id="skip_next">
+              skip_next
+            </span>
+            <span class="material-icons-outlined" id="replay30">
+              replay_30
+            </span>
+          </div>
 
           <div class="_rates">
-            <button onclick="setPlaybackRate(0.5)">0.5X</button>
-            <button onclick="setPlaybackRate(1)">1X</button>
-            <button onclick="setPlaybackRate(1.5)">1.5X</button>
-            <button onclick="setPlaybackRate(2)">2X</button>
-            <button onclick="setPlaybackRate(2.5)">2.5X</button>
+            <button id="pr05">0.5X</button>
+            <button id="pr1">1X</button>
+            <button id="pr2">2X</button>
           </div>
         </div>
 
@@ -105,63 +91,7 @@
       </div>
     </section>
 
-    <section id="other_videos">
-      <div
-        draggable="true"
-        id="video_poster"
-        style="
-          background-image: url(https://firebasestorage.googleapis.com/v0/b/img-uploader-b6b4b.appspot.com/o/seeign-blind.jpg?alt=media&token=cb541c3d-1e5f-45e8-bccf-697e3372f28d);
-        "
-        ondragstart="dragVideo(event, `https://firebasestorage.googleapis.com/v0/b/img-uploader-b6b4b.appspot.com/o/seeign_blind.mp4?alt=media&token=32c73e3d-49fd-448a-beca-bd4a2392f2bc`)"
-        onclick="playOtherVideo(`https://firebasestorage.googleapis.com/v0/b/img-uploader-b6b4b.appspot.com/o/seeign_blind.mp4?alt=media&token=32c73e3d-49fd-448a-beca-bd4a2392f2bc`)"
-      >
-        <div class="content">
-          <p>Niall Horan - Seeing blind</p>
-        </div>
-      </div>
-
-      <div
-        draggable="true"
-        id="video_poster"
-        style="
-          background-image: url(https://firebasestorage.googleapis.com/v0/b/img-uploader-b6b4b.appspot.com/o/better.jpg?alt=media&token=f6cc9025-b937-420d-a000-689eadea9d21);
-        "
-        ondragstart="dragVideo(event, `https://firebasestorage.googleapis.com/v0/b/img-uploader-b6b4b.appspot.com/o/better.mp4?alt=media&token=f743f18e-ea1a-444a-a97b-4b6c8c03f536`)"
-        onclick="playOtherVideo(`https://firebasestorage.googleapis.com/v0/b/img-uploader-b6b4b.appspot.com/o/better.mp4?alt=media&token=f743f18e-ea1a-444a-a97b-4b6c8c03f536`)"
-      >
-        <div class="content">
-          <p>Khalid - Better</p>
-        </div>
-      </div>
-
-      <div
-        draggable="true"
-        id="video_poster"
-        style="
-          background-image: url(https://firebasestorage.googleapis.com/v0/b/img-uploader-b6b4b.appspot.com/o/shivers.jpg?alt=media&token=08e995db-8937-4038-8d9c-ed232bf6f7f2);
-        "
-        ondragstart="dragVideo(event, `https://firebasestorage.googleapis.com/v0/b/img-uploader-b6b4b.appspot.com/o/shivers.mp4?alt=media&token=8108705a-6258-416b-8cc8-7149e33b43c4`)"
-        onclick="playOtherVideo(`https://firebasestorage.googleapis.com/v0/b/img-uploader-b6b4b.appspot.com/o/shivers.mp4?alt=media&token=8108705a-6258-416b-8cc8-7149e33b43c4`)"
-      >
-        <div class="content">
-          <p>Ed Sheeran - Shivers</p>
-        </div>
-      </div>
-
-      <div
-        draggable="true"
-        id="video_poster"
-        style="
-          background-image: url(https://firebasestorage.googleapis.com/v0/b/img-uploader-b6b4b.appspot.com/o/simple-song.jpg?alt=media&token=f00dbbc1-74d0-49de-85b3-82b0bc14e4c2);
-        "
-        ondragstart="dragVideo(event, `https://firebasestorage.googleapis.com/v0/b/img-uploader-b6b4b.appspot.com/o/simple_song.mkv?alt=media&token=67b404e1-2db2-48cb-b080-90f20530f299`)"
-        onclick="playOtherVideo(`https://firebasestorage.googleapis.com/v0/b/img-uploader-b6b4b.appspot.com/o/simple_song.mkv?alt=media&token=67b404e1-2db2-48cb-b080-90f20530f299`)"
-      >
-        <div class="content">
-          <p>Passenger - Simple song</p>
-        </div>
-      </div>
-    </section>
+    <section id="other_videos"></section>
 
     <p style="text-align: center">Click or drag & drop a video to the player</p>
 
@@ -170,6 +100,8 @@
       <a href="https://mburuanthony.github.io/">Antony Mburu</a>
     </p>
 
-    <script src="./index.js"></script>
+    <script type="module" src="./js/index.js"></script>
+    <script type="module" src="./js/controls.js"></script>
+    <script type="module" src="./js/videos.js"></script>
   </body>
 </html>
