@@ -72,6 +72,7 @@ export const pr1 = document.querySelector("#pr1");
 export const pr2 = document.querySelector("#pr2");
 export const year = document.querySelector("#year");
 export const playerPoster = document.querySelector(".player_poster");
+const keymap = document.querySelector("#key-map");
 
 play_pause.addEventListener("click", playVideo);
 
@@ -124,6 +125,12 @@ document.addEventListener("keypress", (e) => {
   if (e.key === ".") video.pause();
 
   if (e.key === ",") video.play();
+});
+
+window.addEventListener("keydown", (e) => {
+  if (e.shiftKey) {
+    keymap.showModal();
+  }
 });
 
 const yeartoday = new Date().getUTCFullYear();

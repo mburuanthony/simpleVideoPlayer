@@ -1,0 +1,32 @@
+@import "./colors";
+@import "./mixins";
+
+#key-map {
+  width: 20rem;
+  border: 0;
+  border-radius: 0.75rem;
+  box-shadow: $boxshadow-light;
+  background-color: $flamingo;
+
+  &::backdrop {
+    background-color: $accent-light;
+  }
+
+  .key_map {
+    margin: unset;
+    text-align: center;
+    font-weight: 600;
+    color: $text;
+  }
+
+  .keys {
+    & > p {
+      @include flexmixin(row, no-wrap, center, flex-start, 1rem);
+      color: $text;
+
+      & :nth-child(1) {
+        font-weight: bolder;
+      }
+    }
+  }
+}

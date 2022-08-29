@@ -334,6 +334,38 @@
   color: #d0eaf9;
 }
 
+#key-map {
+  width: 20rem;
+  border: 0;
+  border-radius: 0.75rem;
+  box-shadow: 0px 6px 24px rgba(0, 0, 0, 0.05);
+  background-color: #f45434;
+}
+#key-map::-webkit-backdrop {
+  background-color: rgba(89, 88, 97, 0.6);
+}
+#key-map::backdrop {
+  background-color: rgba(89, 88, 97, 0.6);
+}
+#key-map .key_map {
+  margin: unset;
+  text-align: center;
+  font-weight: 600;
+  color: #d0eaf9;
+}
+#key-map .keys > p {
+  display: flex !important;
+  flex-direction: row;
+  flex-wrap: no-wrap;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 1rem;
+  color: #d0eaf9;
+}
+#key-map .keys > p :nth-child(1) {
+  font-weight: bolder;
+}
+
 *,
 *::before,
 **::after {
