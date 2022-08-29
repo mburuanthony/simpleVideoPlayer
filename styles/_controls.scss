@@ -41,9 +41,20 @@
         @include flexmixin(row, no-wrap, center, center, 1rem);
         width: 100%;
 
-        span {
-          font-size: 1.5rem;
-          cursor: pointer;
+        .mini {
+          border: 0;
+          border-radius: 50%;
+          box-shadow: none;
+          justify-content: center;
+
+          &:hover {
+            background-color: $accent-light;
+          }
+
+          span {
+            padding: 0.25rem;
+            font-size: 1.5rem;
+          }
         }
 
         #play_pause {
@@ -74,6 +85,7 @@
           box-shadow: none;
           background-color: $accent;
           font-size: 0.875rem;
+          padding: 0.5rem;
         }
       }
     }
@@ -101,7 +113,6 @@
         display: none;
         width: 0.5rem;
         height: 0.5rem;
-        margin-left: -0.5rem;
         border-radius: 50%;
         background-color: $blueturqoise;
       }

@@ -102,6 +102,30 @@ pr05.addEventListener("click", () => setPlaybackRate(0.5));
 pr1.addEventListener("click", () => setPlaybackRate(1));
 pr2.addEventListener("click", () => setPlaybackRate(2));
 
+document.addEventListener("keypress", (e) => {
+  if (e.key === "l") loopVideo();
+
+  if (e.key === "m") muteVideo();
+
+  if (e.key === "n") playNext();
+
+  if (e.key === "o") loopFalse();
+
+  if (e.key === "p") playPrevious();
+
+  if (e.key === "r") location.reload();
+
+  if (e.key === "u") unmuteVideo();
+
+  if (e.key === "+") forward30();
+
+  if (e.key === "-") replay30();
+
+  if (e.key === ".") video.pause();
+
+  if (e.key === ",") video.play();
+});
+
 const yeartoday = new Date().getUTCFullYear();
 year.textContent = yeartoday;
 

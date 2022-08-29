@@ -55,6 +55,14 @@ export const updatecurrentTime = () => {
     total_duratiom_rem <= 9 ? "0" + total_duratiom_rem : total_duratiom_rem
   }`;
 
+  if (video.paused) {
+    playBtn.style.cssText = "display:block";
+    pauseBtn.style.cssText = "display:none";
+  } else {
+    playBtn.style.cssText = "display:none";
+    pauseBtn.style.cssText = "display:block";
+  }
+
   if (video.loop) {
     loop_false.style.cssText = "display:block";
     loop_video.style.cssText = "display:none";
