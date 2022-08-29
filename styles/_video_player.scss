@@ -77,6 +77,14 @@
       display: none;
     }
 
+    @include tablet {
+      display: none;
+    }
+
+    @include tablet-landscape-up {
+      display: none;
+    }
+
     position: absolute;
     transform: translateX(1rem);
     width: 6rem;

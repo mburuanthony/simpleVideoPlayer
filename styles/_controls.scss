@@ -47,8 +47,10 @@
           box-shadow: none;
           justify-content: center;
 
-          &:hover {
-            background-color: $accent-light;
+          @include desktop {
+            &:hover {
+              background-color: $accent-light;
+            }
           }
 
           span {

@@ -20,9 +20,9 @@ export const videoList = [
   {
     title: "Passenger - Simple song",
     imageURL:
-      "https://firebasestorage.googleapis.com/v0/b/img-uploader-b6b4b.appspot.com/o/simple-song.jpg?alt=media&token=f00dbbc1-74d0-49de-85b3-82b0bc14e4c2",
+      "https://firebasestorage.googleapis.com/v0/b/img-uploader-b6b4b.appspot.com/o/video_player%2Fsimple-song.jpg?alt=media&token=b4f5d18b-9b8f-4f94-8b49-f0f01b505052",
     videoURL:
-      "https://firebasestorage.googleapis.com/v0/b/img-uploader-b6b4b.appspot.com/o/simple_song.mkv?alt=media&token=67b404e1-2db2-48cb-b080-90f20530f299",
+      "https://firebasestorage.googleapis.com/v0/b/img-uploader-b6b4b.appspot.com/o/video_player%2Fsimple_song.mkv?alt=media&token=b5915cf6-fb03-4544-a08d-1af2499adf72",
   },
   {
     title: "Imagine Dragons - Bones",
@@ -34,16 +34,16 @@ export const videoList = [
   {
     title: "Khalid - Better",
     imageURL:
-      "https://firebasestorage.googleapis.com/v0/b/img-uploader-b6b4b.appspot.com/o/better.jpg?alt=media&token=f6cc9025-b937-420d-a000-689eadea9d21",
+      "https://firebasestorage.googleapis.com/v0/b/img-uploader-b6b4b.appspot.com/o/video_player%2Fbetter.jpg?alt=media&token=dacdff8b-b6a1-41a4-8ce3-9d63d333c47f",
     videoURL:
-      "https://firebasestorage.googleapis.com/v0/b/img-uploader-b6b4b.appspot.com/o/better.mp4?alt=media&token=f743f18e-ea1a-444a-a97b-4b6c8c03f536",
+      "https://firebasestorage.googleapis.com/v0/b/img-uploader-b6b4b.appspot.com/o/video_player%2Fbetter.mkv?alt=media&token=30dc752a-4f3d-4aed-bbed-b57162832f23",
   },
   {
-    title: "Ed Sheeran - Shivers",
+    title: "I ain't worried",
     imageURL:
-      "https://firebasestorage.googleapis.com/v0/b/img-uploader-b6b4b.appspot.com/o/shivers.jpg?alt=media&token=08e995db-8937-4038-8d9c-ed232bf6f7f2",
+      "https://firebasestorage.googleapis.com/v0/b/img-uploader-b6b4b.appspot.com/o/video_player%2FI_aint_worried.jpg?alt=media&token=a184b187-56fe-4ec4-bb07-839e2776a6e8",
     videoURL:
-      "https://firebasestorage.googleapis.com/v0/b/img-uploader-b6b4b.appspot.com/o/shivers.mp4?alt=media&token=8108705a-6258-416b-8cc8-7149e33b43c4",
+      "https://firebasestorage.googleapis.com/v0/b/img-uploader-b6b4b.appspot.com/o/video_player%2FI_aint_worried.mkv?alt=media&token=92f58bd5-bc3f-4cf9-9703-d9ab262329f8",
   },
 ];
 
@@ -118,16 +118,16 @@ document.addEventListener("keypress", (e) => {
 
   if (e.key === "u") unmuteVideo();
 
-  if (e.key === "+") forward30();
-
-  if (e.key === "-") replay30();
-
   if (e.key === ".") video.pause();
 
   if (e.key === ",") video.play();
 });
 
-window.addEventListener("keydown", (e) => {
+document.addEventListener("keydown", (e) => {
+  if (e.key === "ArrowRight") forward30();
+
+  if (e.key === "ArrowLeft") replay30();
+
   if (e.shiftKey) {
     keymap.showModal();
   }
