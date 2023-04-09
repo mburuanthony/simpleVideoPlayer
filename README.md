@@ -2,7 +2,12 @@
 
 ```bash
 # clone repository
+
+# HTTPS
 git clone https://github.com/mburuanthony/simpleVideoPlayer.git
+
+# SSH
+git@github.com:mburuanthony/simpleVideoPlayer.git
 ```
 minimal web video player
 
